@@ -1,11 +1,26 @@
 angular.module('starter.controllers')
 
-.factory('apiService', function($http, $timeout) {
+.factory('apiService', function($http, $timeout, $q, storageService) {
   var service = {};
-  var url = 'https://thepelicanblog.com/api/';
+  var url = 'https://thepelicanblog.com/api';
 
   service.getHomeFeed = function () {
-    return $http.get(url + 'posts');
+    var defer = $q.defer();
+
+    $http.get(url + '/posts')
+    .then(function (response) {
+      storageService.storePosts(response.data);
+      return defer.resolve(response.data);
+    })
+    .catch(function (err) {
+      return defer.reject(err);
+    })
+
+    return defer.promise;
+  };
+
+  service.findPost = function (postId) {
+    return $http.get(url + '/post/' + postId);
   };
 
   return service

@@ -41,19 +41,18 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('HomeController', function($scope, apiService) {
-  $scope.posts = [];
-
-  apiService.getHomeFeed()
+.controller('PostController', function($scope, $stateParams, apiService, $timeout) {
+  apiService.findPost($stateParams.postId)
   .then(function (response) {
-    console.info(response.data);
-    $scope.posts = response.data;
+    $timeout(function () {
+      $scope.post = response.data;
+    }, 400)
   })
   .catch(function (err) {
-    console.log(err);
+    console.error(err);
   })
 
-})
-
-// .controller('PlaylistCtrl', function($scope, $stateParams) {
-// });
+  $scope.openLink = function (post) {
+    window.open(post.link, '_system');
+  };
+});

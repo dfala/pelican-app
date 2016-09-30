@@ -1,0 +1,16 @@
+<ion-view view-title="{{post.title}}">
+  <ion-content>
+    <!-- <h3>{{post.title}}</h3> -->
+
+    <pre ng-if="post.text">{{post.text}}</pre>
+
+  </ion-content>
+
+  <ion-footer-bar class="bar-positive">
+      <a ng-if="post.link" ng-click="openLink(post)">
+        <div class="title">
+          Visit Link
+        </div>
+      </a>
+  </ion-footer-bar>
+</ion-view>

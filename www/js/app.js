@@ -50,25 +50,41 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.playlists', {
-    url: '/playlists',
+  .state('app.home', {
+    url: '/home',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlists.html',
+        templateUrl: 'templates/home.html',
         controller: 'HomeController'
       }
     }
   })
 
   .state('app.single', {
-    url: '/playlists/:playlistId',
+    url: '/post/:postId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
+        templateUrl: 'templates/post.html',
         controller: 'HomeController'
       }
     }
   });
+
+  // .state('app.single', {
+  //   url: '/post/:postId',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'templates/post.html',
+  //       controller: 'PostController'
+  //     }
+  //   },
+  //   resolve: {
+  //     postData: function (apiService, $stateParams) {
+  //       return apiService.findPost($stateParams.postId);
+  //     }
+  //   }
+  // });
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/home');
 });
