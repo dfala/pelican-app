@@ -20,3 +20,13 @@ pre {
 a.item {
   background-color: #fff;
 }
+
+.full {
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.full .list {
+  margin-bottom: 10px;
+}
