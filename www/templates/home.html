@@ -1,5 +1,11 @@
 <ion-view view-title="Home Feed">
   <ion-content>
+
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
+
     <ion-list>
 
       <ion-item>
@@ -15,4 +21,12 @@
 
     </ion-list>
   </ion-content>
+
+  <ion-footer-bar class="bar-dark">
+      <a ng-click="login()">
+        <div class="title">
+          Login / Sign Up
+        </div>
+      </a>
+  </ion-footer-bar>
 </ion-view>

@@ -1,12 +1,14 @@
-<ion-view view-title="{{post.title}}">
+<ion-view view-title="{{post.parentList.title}}">
   <ion-content>
-    <!-- <h3>{{post.title}}</h3> -->
 
-    <pre ng-if="post.text">{{post.text}}</pre>
+<pre>
+<h4>{{post.title}}</h4>
+{{post.text}}
+</pre>
 
   </ion-content>
 
-  <ion-footer-bar class="bar-positive">
+  <ion-footer-bar class="bar-positive" ng-if="post.link">
       <a ng-if="post.link" ng-click="openLink(post)">
         <div class="title">
           Visit Link

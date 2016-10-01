@@ -43,4 +43,28 @@ angular.module('starter.controllers')
     window.open(post.link, '_system');
   };
 
+  $scope.doRefresh = function () {
+    apiService.getHomeFeed()
+    .then(function (response) {
+      $scope.posts = response;
+    })
+    .catch(function (err) {
+      console.log(err);
+    })
+    .finally(function () {
+      $scope.$broadcast('scroll.refreshComplete');
+    });
+  };
+
+  $scope.login = function () {
+    apiService.login()
+    .then(function (response) {
+      console.warn('auth response ', response);
+      // alert(response.data.full_name);
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+  }
+
 })

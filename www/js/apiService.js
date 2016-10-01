@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
 
-.factory('apiService', function($http, $timeout, $q, storageService) {
+.factory('apiService', function($http, $timeout, $q, storageService, $ionicAuth) {
   var service = {};
   var url = 'https://thepelicanblog.com/api';
 
@@ -21,6 +21,11 @@ angular.module('starter.controllers')
 
   service.findPost = function (postId) {
     return $http.get(url + '/post/' + postId);
+  };
+
+  service.login = function () {
+    return $ionicAuth.login('facebook');
+    // return $http.jsonp('https://thepelicanblog.com/auth/app-facebook');
   };
 
   return service

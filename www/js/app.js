@@ -22,6 +22,14 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   });
 })
 
+.config(function($ionicCloudProvider) {
+  $ionicCloudProvider.init({
+    "core": {
+      "app_id": "ceac2eb1"
+    }
+  });
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
