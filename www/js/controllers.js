@@ -42,9 +42,12 @@ angular.module('starter.controllers', ['ionic.cloud'])
 })
 
 .controller('PostController', function($scope, $stateParams, apiService, $timeout) {
+  $scope.loading = true;
+
   apiService.findPost($stateParams.postId)
   .then(function (response) {
     $timeout(function () {
+      $scope.loading = false;
       $scope.post = response.data;
     }, 400)
   })

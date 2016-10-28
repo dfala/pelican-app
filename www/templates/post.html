@@ -1,5 +1,6 @@
 <ion-view view-title="{{post.parentList.title}}">
-  <ion-content>
+  <ion-content class="post-content">
+    <ion-spinner icon="dots" ng-if="loading"></ion-spinner>
 
 <pre>
 <h4>{{post.title}}</h4>

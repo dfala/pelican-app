@@ -22,7 +22,7 @@ angular.module('starter.controllers')
 
   apiService.getUserPosts(userId)
   .then(function (response) {
-    storageService.storePosts(response.data);
+    // storageService.storePosts(response.data);
     $scope.posts = response.data;
   })
   .catch(function (err) {
