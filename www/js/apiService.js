@@ -28,5 +28,9 @@ angular.module('starter.controllers')
     // return $http.jsonp('https://thepelicanblog.com/auth/app-facebook');
   };
 
+  service.getUsers = function () {
+    return $http.get(url + '/users');
+  };
+
   return service
 });
