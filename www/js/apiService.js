@@ -32,5 +32,9 @@ angular.module('starter.controllers')
     return $http.get(url + '/users');
   };
 
+  service.getUserPosts = function (userId) {
+    return $http.get(url + '/user-posts/' + userId);
+  };
+
   return service
 });

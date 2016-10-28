@@ -30,3 +30,15 @@ a.item {
 .full .list {
   margin-bottom: 10px;
 }
+
+/*USERS CSS*/
+.sm-box {
+  padding-left: 72px;
+  min-height: 72px;
+}
+
+.sm-box > img.sm-img {
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 2px;
+}

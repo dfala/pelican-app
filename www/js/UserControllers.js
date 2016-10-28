@@ -16,3 +16,16 @@ angular.module('starter.controllers')
   getUsers();
 
 })
+
+.controller('UserPostsController', function($scope, apiService, $stateParams, storageService) {
+  var userId = $stateParams.userId || null;
+
+  apiService.getUserPosts(userId)
+  .then(function (response) {
+    storageService.storePosts(response.data);
+    $scope.posts = response.data;
+  })
+  .catch(function (err) {
+    console.error(err);
+  })
+});

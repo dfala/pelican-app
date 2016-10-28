@@ -2,10 +2,10 @@
   <ion-content>
     <div class="list">
 
-      <a class="item item-thumbnail-left" href="#" ng-repeat="user in users">
-        <img ng-src="{{user.image}}">
+      <a class="sm-box item item-thumbnail-left" href="#/app/user/{{user._id}}" ng-repeat="user in users | orderBy:'user.lists.length'">
+        <img class="sm-img" ng-src="{{user.image}}">
         <h2>{{user.displayName}}</h2>
-        <p>{{user.email}}</p>
+        <p>{{user.lists.length || 0}} list<span ng-show="user.lists.length !== 1">s</span></p>
       </a>
 
     </div>

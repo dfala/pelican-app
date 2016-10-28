@@ -49,16 +49,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.browse', {
-    url: '/browse',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/browse.html',
-        controller: 'UserBrowseController'
-      }
-    }
-  })
-
   .state('app.home', {
     url: '/home',
     views: {
@@ -75,6 +65,26 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       'menuContent': {
         templateUrl: 'templates/post.html',
         controller: 'HomeController'
+      }
+    }
+  })
+
+  .state('app.browse', {
+    url: '/browse',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/browse.html',
+        controller: 'UserBrowseController'
+      }
+    }
+  })
+
+  .state('app.userposts', {
+    url: '/user/:userId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/home.html',
+        controller: 'UserPostsController'
       }
     }
   });
