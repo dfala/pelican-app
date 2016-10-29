@@ -36,5 +36,9 @@ angular.module('starter.controllers')
     return $http.get(url + '/user-posts/' + userId);
   };
 
+  service.lazyLoad = function (start) {
+    return $http.get(url + '/more-posts/' + start);
+  }
+
   return service
 });

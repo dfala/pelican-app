@@ -58,4 +58,23 @@ angular.module('starter.controllers', ['ionic.cloud'])
   $scope.openLink = function (post) {
     window.open(post.link, '_system');
   };
+})
+
+.directive('lazyLoad', function (apiService, $timeout, $ionicScrollDelegate) {
+  return {
+    restrict: 'A',
+    link: function (scope, elem, attr) {
+      scope.loadMore = function () {
+        apiService.lazyLoad(scope.posts.length)
+        .then(function (response) {
+          if (!response.data || !response.data.length) return (scope.cantLoad = true);
+          scope.posts = scope.posts.concat(response.data);
+          scope.$broadcast('scroll.infiniteScrollComplete');
+        })
+        .catch(function (err) {
+          console.error(err);
+        })
+      };
+    }
+  }
 });

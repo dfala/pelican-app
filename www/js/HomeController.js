@@ -1,6 +1,9 @@
 angular.module('starter.controllers')
 
 .controller('HomeController', function($scope, apiService, $stateParams, storageService) {
+  $scope.loading = true;
+  $scope.isHome = true;
+
   $scope.posts = [];
   var postId = $stateParams.postId || null;
 
@@ -11,6 +14,7 @@ angular.module('starter.controllers')
     apiService.getHomeFeed()
     .then(function (response) {
       $scope.posts = response;
+      $scope.loading = false;
       if (postId) findPost(postId);
     })
     .catch(function (err) {
@@ -21,6 +25,7 @@ angular.module('starter.controllers')
   if (!storageService.posts) {
     getPosts();
   } else {
+    $scope.loading = false;
     $scope.posts = storageService.posts;
   }
 
